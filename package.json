@@ -5,7 +5,9 @@
 	"main": "server.js",
 	"scripts": {
 		"start": "node server",
-		"server": "nodemon server"
+		"server": "nodemon server",
+		"client": "npm start --prefix client",
+		"dev": "concurrently \"npm run server\" \" npm run client\""
 	},
 	"author": "Ashwin Raj",
 	"license": "MIT",
@@ -17,7 +19,9 @@
 		"gravatar": "^1.8.1",
 		"jsonwebtoken": "^8.5.1",
 		"mongoose": "^5.10.7",
-		"request": "^2.88.2"
+		"normalize-url": "^5.2.1",
+		"request": "^2.88.2",
+		"uuid": "^8.3.1"
 	},
 	"devDependencies": {
 		"concurrently": "^5.3.0",
