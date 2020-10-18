@@ -49,7 +49,7 @@ const PostItem = ({
 							type="button"
 							className="btn btn-danger"
 						>
-							<i className="fas fa-times" />
+							<span>Delete post</span>
 						</button>
 					)}
 				</Fragment>

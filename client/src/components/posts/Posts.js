@@ -1,16 +1,23 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PostItem from './PostItem';
 import PostForm from './PostForm';
 import { getPosts } from '../../actions/post';
 
-const Posts = ({ getPosts, post: { posts } }) => {
+//using react-redux hooks to connect in this component
+const Posts = () => {
+	//instead of mapStateToProps
+	const { posts } = useSelector((state) => state.post);
+	//instead of connect
+	const dispatch = useDispatch();
+
 	useEffect(
 		() => {
-			getPosts();
+			dispatch(getPosts());
 		},
-		[ getPosts ]
+		[ dispatch ]
 	);
 
 	return (
@@ -32,8 +39,4 @@ Posts.propTypes = {
 	post     : PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
-	post : state.post
-});
-
-export default connect(mapStateToProps, { getPosts })(Posts);
+export default Posts;
