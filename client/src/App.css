@@ -1,9 +1,9 @@
 /* Global Styles */
 :root {
-	--primary-color: #ed5b54;
+	--primary-color: #9244d5;
 	--dark-color: #343a40;
 	--light-color: #f4f4f4;
-	--danger-color: #7a0c17;
+	--danger-color: #883936;
 	--success-color: #28a745;
 }
 
@@ -37,7 +37,7 @@ img {
 /* Utilities */
 .container {
 	max-width: 1100px;
-	margin: auto;
+	/* margin: auto; */
 	overflow: hidden;
 	padding: 0 2rem;
 	margin-top: 6rem;

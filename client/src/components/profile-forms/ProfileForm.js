@@ -89,9 +89,10 @@ const ProfileForm = ({
 				<div className="form-group">
 					<select name="status" value={status} onChange={onChange}>
 						<option>* Select Professional Status</option>
-						<option value="Developer">Developer</option>
-						<option value="Junior Developer">Junior Developer</option>
-						<option value="Senior Developer">Senior Developer</option>
+						<option value="General Physician">General Physician</option>
+						<option value="Surgion">Surgion</option>
+						<option value="Junior Surgion">Junior Surgion</option>
+						<option value="Senior Surgion">Senior Surgion</option>
 						<option value="Manager">Manager</option>
 						<option value="Student or Learning">Student or Learning</option>
 						<option value="Instructor">Instructor or Teacher</option>
@@ -147,7 +148,7 @@ const ProfileForm = ({
 				<div className="form-group">
 					<input
 						type="text"
-						placeholder="Github Username"
+						placeholder="Article Publication Links"
 						name="research_publications"
 						value={research_publications}
 						onChange={onChange}
