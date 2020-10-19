@@ -19,9 +19,9 @@ const ProfileItem = ({
 				</Link>
 			</div>
 			<ul>
-				{expertise.slice(0, 4).map((skill, index) => (
+				{expertise.slice(0, 4).map((ex, index) => (
 					<li key={index} className="text-primary">
-						<i className="fas fa-check" /> {skill}
+						<i className="fas fa-check" /> {ex}
 					</li>
 				))}
 			</ul>

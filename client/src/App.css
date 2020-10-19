@@ -1,7 +1,7 @@
 /* Global Styles */
 :root {
 	--primary-color: #9244d5;
-	--dark-color: #343a40;
+	--dark-color: #482753;
 	--light-color: #f4f4f4;
 	--danger-color: #d33d3d;
 	--success-color: #28a745;
@@ -10,7 +10,6 @@
 * {
 	box-sizing: border-box;
 	margin: 0;
-	padding: 0;
 }
 
 body {
@@ -309,7 +308,7 @@ button {
 	width: 100%;
 	top: 0;
 	border-bottom: solid 1px var(--primary-color);
-	opacity: 0.9;
+	opacity: 0.7;
 }
 
 .navbar ul {
@@ -482,6 +481,37 @@ button {
 	color: #aaa;
 	font-size: 0.8rem;
 	margin-bottom: 0.5rem;
+}
+.footer {
+	width: 741px;
+	display: flex;
+	background-color: rgb(27, 25, 25);
+	color: aliceblue;
+	opacity: 0.9;
+}
+.footer__content__left {
+	padding-left: 4.875rem;
+	font-weight: 400;
+}
+h5 {
+	padding-top: 0.3125rem;
+}
+.stack__list {
+	margin-left: -1.25rem;
+	font-size: 0.815rem;
+	list-style-type: square;
+}
+/* desktop screens for footer */
+@media only screen and (min-width: 800px) {
+	.footer {
+		width: 100%;
+	}
+	.footer__content__right {
+		margin-left: 28.125rem;
+	}
+	.footer__content__left {
+		padding-left: 6.875rem;
+	}
 }
 
 /* Mobile Styles */
