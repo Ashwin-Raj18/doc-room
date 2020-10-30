@@ -1,8 +1,0 @@
-{
-	"mongoURI": "mongodb+srv://ashwin:1234@cluster0.1o7vz.mongodb.net/doc-room-db?retryWrites=true&w=majority",
-	"jwtSecret": "mySecretToken"
-}
-
-
-//project0:   mongodb+srv://ashwin:<password>@cluster0.dttgm.mongodb.net/<dbname>?retryWrites=true&w=majority
-//project1:   mongodb+srv://ashwin:<password>@cluster0.1o7vz.mongodb.net/<dbname>?retryWrites=true&w=majority

@@ -1,4 +1,0 @@
-{
-	"mongoURI": "mongodb+srv://ashwin:1234@cluster0.1o7vz.mongodb.net/doc-room-db?retryWrites=true&w=majority",
-	"jwtSecret": "mySecretToken"
-}
