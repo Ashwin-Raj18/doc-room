@@ -482,6 +482,40 @@ button {
 	font-size: 0.8rem;
 	margin-bottom: 0.5rem;
 }
+
+/* article styles */
+.article__container {
+	margin: 3rem;
+	height: 3rem;
+	display: grid;
+	grid-template-columns: 5rem;
+	border: #ccc solid 1px;
+}
+.article__img__container {
+	grid-column: 1 / span 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+.article__image {
+	flex-shrink: 0;
+	min-width: 100%;
+	min-height: 100%;
+}
+.article__content {
+	background-color: #f4f4f4;
+	grid-column: 2 / span 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	cursor: pointer;
+	padding-left: 1rem;
+}
+.article__content:hover {
+	background-color: rgb(255, 255, 255);
+}
 .footer {
 	width: 741px;
 	display: flex;

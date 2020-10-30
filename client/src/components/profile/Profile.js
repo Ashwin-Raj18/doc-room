@@ -7,12 +7,20 @@ import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
-import { getProfileById } from '../../actions/profile';
+import { getProfileById, getArticleById } from '../../actions/profile';
+import Article from './Article';
 
-const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
+const Profile = ({
+	getProfileById,
+	getArticleById,
+	profile        : { profile, articles },
+	auth,
+	match
+}) => {
 	useEffect(
 		() => {
 			getProfileById(match.params.id);
+			getArticleById(match.params.id);
 		},
 		[ getProfileById, match.params.id ]
 	);
@@ -62,6 +70,18 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
 							)}
 						</div>
 					</div>
+					<div className="profile__articles">
+						<h2 className="text-primary">Scholarly Articles</h2>
+						{articles.length > 0 ? (
+							articles.map((article) => (
+								<div className="article__container">
+									<Article article={article} />
+								</div>
+							))
+						) : (
+							<h4>No Scholarly Articles added</h4>
+						)}
+					</div>
 				</Fragment>
 			)}
 		</Fragment>
@@ -70,6 +90,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
 
 Profile.propTypes = {
 	getProfileById : PropTypes.func.isRequired,
+	getArticleById : PropTypes.func.isRequired,
 	profile        : PropTypes.object.isRequired,
 	auth           : PropTypes.object.isRequired
 };
@@ -79,4 +100,4 @@ const mapStateToProps = (state) => ({
 	auth    : state.auth
 });
 
-export default connect(mapStateToProps, { getProfileById })(Profile);
+export default connect(mapStateToProps, { getProfileById, getArticleById })(Profile);

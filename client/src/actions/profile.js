@@ -7,7 +7,8 @@ import {
 	PROFILE_ERROR,
 	UPDATE_PROFILE,
 	CLEAR_PROFILE,
-	ACCOUNT_DELETED
+	ACCOUNT_DELETED,
+	GET_ARTICLES
 } from './types';
 
 //get current users profile
@@ -200,5 +201,22 @@ export const deleteAccount = () => async (dispatch) => {
 				payload : { msg: err.response.statusText, status: err.response.status }
 			});
 		}
+	}
+};
+
+// Get articles by profileID
+export const getArticleById = (userId) => async (dispatch) => {
+	try {
+		const res = await axios.get(`/api/profile/article/${userId}`);
+
+		dispatch({
+			type    : GET_ARTICLES,
+			payload : res.data
+		});
+	} catch (err) {
+		dispatch({
+			type    : PROFILE_ERROR,
+			payload : { msg: err.response.statusText, status: err.response.status }
+		});
 	}
 };

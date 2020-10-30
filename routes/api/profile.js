@@ -6,6 +6,7 @@ const auth = require('../../middleware/auth');
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Post = require('../../models/Post');
+const axios = require('axios');
 
 // @route    GET api/profile/me
 // @desc     Get current users profile
@@ -286,4 +287,36 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
 		return res.status(500).json({ msg: 'Server error' });
 	}
 });
+
+// @route    get api/profile/article/:user_id
+//@desc get article links
+//@access public
+
+router.get('/article/:user_id', async ({ params: { user_id } }, res) => {
+	try {
+		const article = await Profile.find(
+			{ user: user_id },
+			{
+				research_publications : 1
+			}
+		);
+		const linkPreviews = [];
+		if (!article) return res.status(400).json({ msg: 'Profile not found' });
+		const urls = article[0].research_publications.map((url) => url);
+		const urlData = await Promise.all(
+			urls.map(async (url) => {
+				let graphRes = await axios.post(
+					`https://graph.facebook.com/v8.0/?scrape=true&id=${url}&access_token=755123608679060%7CRhH1lgF-p5r_WEXAQTkU6w7wne4`
+				);
+				return graphRes.data;
+			})
+		);
+
+		return res.json(urlData);
+	} catch (err) {
+		console.error(err.message);
+		return res.status(500).json({ msg: 'Server error' });
+	}
+});
+
 module.exports = router;

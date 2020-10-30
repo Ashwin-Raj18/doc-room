@@ -3,7 +3,8 @@ import {
 	PROFILE_ERROR,
 	CLEAR_PROFILE,
 	UPDATE_PROFILE,
-	GET_PROFILES
+	GET_PROFILES,
+	GET_ARTICLES
 } from '../actions/types';
 
 const initialState = {
@@ -11,7 +12,8 @@ const initialState = {
 	profiles             : [],
 	researchPublications : [],
 	loading              : true,
-	error                : {}
+	error                : {},
+	articles             : []
 };
 
 export default function (state = initialState, action) {
@@ -43,6 +45,11 @@ export default function (state = initialState, action) {
 				error   : payload,
 				loading : false,
 				profile : null
+			};
+		case GET_ARTICLES:
+			return {
+				...state,
+				articles : payload
 			};
 
 		default:

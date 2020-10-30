@@ -154,7 +154,7 @@ const ProfileForm = ({
 						onChange={onChange}
 					/>
 					<small className="form-text">
-						If you want your latest repos and a Github link, include your username
+						You can add your reseach article, blog link here seperated by comas.
 					</small>
 				</div>
 				<div className="form-group">
