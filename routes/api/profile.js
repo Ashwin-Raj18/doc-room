@@ -300,9 +300,12 @@ router.get('/article/:user_id', async ({ params: { user_id } }, res) => {
 				research_publications : 1
 			}
 		);
-		const linkPreviews = [];
+
 		if (!article) return res.status(400).json({ msg: 'Profile not found' });
 		const urls = article[0].research_publications.map((url) => url);
+		if (urls.length == 0) {
+			return res.status(400).json({ msg: 'No publications' });
+		}
 		const urlData = await Promise.all(
 			urls.map(async (url) => {
 				let graphRes = await axios.post(

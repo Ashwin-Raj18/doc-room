@@ -17,7 +17,12 @@ const AddEducation = ({ addEducation, history }) => {
 
 	const { school, degree, fieldofstudy, from, to, description, current } = formData;
 
-	const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+	const onChange = (e) => {
+		const { name, value } = e.target;
+		setFormData((prevFormData) => {
+			return { ...prevFormData, [name]: value };
+		});
+	};
 
 	return (
 		<Fragment>

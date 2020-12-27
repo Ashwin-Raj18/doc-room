@@ -215,8 +215,8 @@ export const getArticleById = (userId) => async (dispatch) => {
 		});
 	} catch (err) {
 		dispatch({
-			type    : PROFILE_ERROR,
-			payload : { msg: err.response.statusText, status: err.response.status }
+			type    : GET_ARTICLES,
+			payload : []
 		});
 	}
 };
