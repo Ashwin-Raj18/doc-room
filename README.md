@@ -12,3 +12,5 @@ React-redux, thunk for state management.
 Connect and mapStateToProps for states in component.
 
 In client/components/posts/Post.js  useSelector() and useDispatch() is used to demonstrate more modern way of mapping state into components.
+
+Live App: http://www.doc-room.tk/
