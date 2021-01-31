@@ -8,7 +8,8 @@ import {
 	UPDATE_PROFILE,
 	CLEAR_PROFILE,
 	ACCOUNT_DELETED,
-	GET_ARTICLES
+	GET_ARTICLES,
+	GET_DPS
 } from './types';
 
 //get current users profile
@@ -47,6 +48,22 @@ export const getProfiles = () => async (dispatch) => {
 	}
 };
 
+// Get DPs by IDs
+export const getDpsByIds = (userIds) => async (dispatch) => {
+	try {
+		const res = await axios.post('/api/profile/dpByIds', userIds);
+
+		dispatch({
+			type    : GET_DPS,
+			payload : res.data
+		});
+	} catch (err) {
+		dispatch({
+			type    : PROFILE_ERROR,
+			payload : { msg: err.response.statusText, status: err.response.status }
+		});
+	}
+};
 // Get profile by ID
 export const getProfileById = (userId) => async (dispatch) => {
 	try {
@@ -217,6 +234,31 @@ export const getArticleById = (userId) => async (dispatch) => {
 		dispatch({
 			type    : GET_ARTICLES,
 			payload : []
+		});
+	}
+};
+
+//post DP
+export const updateDp = (formData, options) => async (dispatch) => {
+	try {
+		const res = await axios.post('/api/profile/updateDisplayPic', formData, options);
+
+		dispatch({
+			type    : UPDATE_PROFILE,
+			payload : res.data
+		});
+
+		dispatch(setAlert('DP Added', 'success'));
+	} catch (err) {
+		const errors = err.response.data.errors;
+
+		if (errors) {
+			errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+		}
+
+		dispatch({
+			type    : PROFILE_ERROR,
+			payload : { msg: err.response.statusText, status: err.response.status }
 		});
 	}
 };

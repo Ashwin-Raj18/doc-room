@@ -9,7 +9,6 @@ import Landing from './components/layout/Landing';
 import Routes from './components/routing/Routes';
 
 import './App.css';
-import Footer from './components/layout/Footer';
 
 if (localStorage.token) {
 	setAuthToken(localStorage.token);

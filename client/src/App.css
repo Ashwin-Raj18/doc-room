@@ -214,6 +214,8 @@ img {
 }
 
 .round-img {
+	width: 180px;
+	height: 200px;
 	border-radius: 50%;
 }
 
@@ -376,6 +378,7 @@ button {
 }
 
 .profile-top img {
+	height: 280px;
 	width: 250px;
 }
 
@@ -447,6 +450,19 @@ button {
 	flex: 3;
 	flex-basis: 20%;
 }
+/*dashboard action image*/
+.dp_wrapper {
+	padding: 50px;
+}
+
+.dp_wrapper img {
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	margin: 20px;
+	object-fit: cover;
+	object-position: center right;
+}
 
 /* Posts Page */
 .post-form .post-form-header {
@@ -466,7 +482,7 @@ button {
 }
 
 .post img {
-	width: 100px;
+	width: 180px;
 }
 
 .post .comment-count {

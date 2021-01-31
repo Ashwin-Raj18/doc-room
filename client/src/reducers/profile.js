@@ -4,7 +4,8 @@ import {
 	CLEAR_PROFILE,
 	UPDATE_PROFILE,
 	GET_PROFILES,
-	GET_ARTICLES
+	GET_ARTICLES,
+	GET_DPS
 } from '../actions/types';
 
 const initialState = {
@@ -13,7 +14,8 @@ const initialState = {
 	researchPublications : [],
 	loading              : true,
 	error                : {},
-	articles             : []
+	articles             : [],
+	dpPics               : []
 };
 
 export default function (state = initialState, action) {
@@ -51,7 +53,11 @@ export default function (state = initialState, action) {
 				...state,
 				articles : payload
 			};
-
+		case GET_DPS:
+			return {
+				...state,
+				dpPics : payload
+			};
 		default:
 			return state;
 	}

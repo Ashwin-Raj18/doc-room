@@ -22,7 +22,7 @@ const Profile = ({
 			getProfileById(match.params.id);
 			getArticleById(match.params.id);
 		},
-		[ getProfileById, match.params.id ]
+		[ getProfileById, getArticleById, match.params.id ]
 	);
 
 	return (

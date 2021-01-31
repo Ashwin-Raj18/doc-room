@@ -107,6 +107,18 @@ const ProfileSchema = new mongoose.Schema({
 	date                  : {
 		type    : Date,
 		default : Date.now
+	},
+	displayPic            : {
+		fileUrl   : {
+			type : String
+		},
+		filePath  : {
+			type : String
+		},
+		createdAt : {
+			default : Date.now(),
+			type    : Date
+		}
 	}
 });
 

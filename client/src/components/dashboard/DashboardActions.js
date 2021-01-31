@@ -1,9 +1,70 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { getCurrentProfile } from '../../actions/profile';
+import { updateDp } from '../../actions/profile';
 
 const DashboardActions = () => {
+	const { displayPic, user: { avatar } } = useSelector((state) => state.profile.profile);
+
+	const dispatch = useDispatch();
+
+	const [ dpState, setDpState ] = useState({
+		uploadPercentage : 0
+	});
+	const handleFileUpload = ({ target: { files } }) => {
+		console.log(files[0]);
+		let data = new FormData();
+		data.append('profileImg', files[0]);
+
+		const options = {
+			onUploadProgress : (progressEvent) => {
+				const { loaded, total } = progressEvent;
+				let percent = Math.floor(loaded * 100 / total);
+				console.log(`${loaded}kb of ${total}kb | ${percent}%`);
+
+				if (percent < 100) {
+					setDpState({ ...dpState, uploadPercentage: percent });
+				}
+			}
+		};
+		dispatch(updateDp(data, options));
+	};
+
+	const inputFile = useRef(null);
+	const onUploadClick = () => {
+		inputFile.current.click();
+	};
+
+	useEffect(
+		() => {
+			dispatch(getCurrentProfile());
+		},
+		[ dispatch ]
+	);
+
 	return (
 		<div className="dash-buttons">
+			<div className="dp_wrapper">
+				<img
+					alt="dp_img"
+					src={
+						displayPic.fileUrl && displayPic.fileUrl !== '' ? displayPic.fileUrl : avatar
+					}
+				/>
+			</div>
+
+			<div onClick={onUploadClick} className="btn btn-light">
+				<input
+					style={{ display: 'none' }}
+					accept=".jpg,.png,.gif"
+					ref={inputFile}
+					onChange={handleFileUpload}
+					type="file"
+				/>
+				<i className="fas fa-user-circle text-primary" /> Change Profile Picture
+			</div>
 			<Link to="/edit-profile" className="btn btn-light">
 				<i className="fas fa-user-circle text-primary" /> Edit Profile
 			</Link>

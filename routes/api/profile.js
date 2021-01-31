@@ -7,6 +7,7 @@ const Profile = require('../../models/Profile');
 const User = require('../../models/User');
 const Post = require('../../models/Post');
 const axios = require('axios');
+const mongoose = require('mongoose');
 
 // @route    GET api/profile/me
 // @desc     Get current users profile
@@ -107,6 +108,25 @@ router.post(
 router.get('/', async (req, res) => {
 	try {
 		const profiles = await Profile.find().populate('user', [ 'name', 'avatar' ]);
+		res.json(profiles);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Server Error');
+	}
+});
+// @route    post api/profilesByIds
+// @desc     Get  dp by User Ids
+// @access   Public
+router.post('/dpByIds', async (req, res) => {
+	try {
+		console.log(req.body);
+		const profiles = await Profile.find({
+			user : {
+				$in : req.body.userIds.map((id) => {
+					return mongoose.Types.ObjectId(id);
+				})
+			}
+		}).select([ 'displayPic', 'user' ]);
 		res.json(profiles);
 	} catch (err) {
 		console.error(err.message);
