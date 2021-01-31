@@ -54,7 +54,7 @@ const DashboardActions = () => {
 					}
 				/>
 			</div>
-			{dpProgress !== 0 && dpProgress !== 100 ? (
+			{dpProgress !== 0 ? (
 				<div className="dp__progress">Uploading :{dpProgress}%</div>
 			) : (
 				''
