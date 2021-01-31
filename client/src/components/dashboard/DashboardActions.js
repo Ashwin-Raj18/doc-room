@@ -10,9 +10,7 @@ const DashboardActions = () => {
 
 	const dispatch = useDispatch();
 
-	const [ dpState, setDpState ] = useState({
-		uploadPercentage : 0
-	});
+	const [ dpProgress, setdpProgress ] = useState(0);
 	const handleFileUpload = ({ target: { files } }) => {
 		console.log(files[0]);
 		let data = new FormData();
@@ -22,11 +20,8 @@ const DashboardActions = () => {
 			onUploadProgress : (progressEvent) => {
 				const { loaded, total } = progressEvent;
 				let percent = Math.floor(loaded * 100 / total);
-				console.log(`${loaded}kb of ${total}kb | ${percent}%`);
-
-				if (percent < 100) {
-					setDpState({ ...dpState, uploadPercentage: percent });
-				}
+				console.log(`${loaded}kb of ${total}kb`);
+				setdpProgress(percent);
 			}
 		};
 		dispatch(updateDp(data, options));
@@ -54,7 +49,8 @@ const DashboardActions = () => {
 					}
 				/>
 			</div>
-
+			{dpState !== 0 && d}
+			<div className="upload__progress" />
 			<div onClick={onUploadClick} className="btn btn-light">
 				<input
 					style={{ display: 'none' }}
