@@ -24,7 +24,6 @@ app.use('/api/posts', require('./routes/api/posts'));
 const uploads = require('./routes/fileUploadHandler');
 const fileUploads = require('./routes/api/FileUpload');
 app.use('/api/profile', fileUploads(uploads));
-
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
 	// Set static folder

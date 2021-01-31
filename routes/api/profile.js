@@ -119,7 +119,6 @@ router.get('/', async (req, res) => {
 // @access   Public
 router.post('/dpByIds', async (req, res) => {
 	try {
-		console.log(req.body);
 		const profiles = await Profile.find({
 			user : {
 				$in : req.body.userIds.map((id) => {

@@ -1,7 +1,8 @@
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
+const path = require('path');
 
-const DIR = './public/assets/userDp/';
+const DIR = path.join(__basedir, '/public/assets/userDp/');
 
 const storage = multer.diskStorage({
 	destination : (req, file, cb) => {
