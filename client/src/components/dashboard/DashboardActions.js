@@ -22,6 +22,11 @@ const DashboardActions = () => {
 				let percent = Math.floor(loaded * 100 / total);
 				console.log(`${loaded}kb of ${total}kb`);
 				setdpProgress(percent);
+				if (percent === 100) {
+					setTimeout(() => {
+						setdpProgress(0);
+					}, 4000);
+				}
 			}
 		};
 		dispatch(updateDp(data, options));
@@ -50,7 +55,7 @@ const DashboardActions = () => {
 				/>
 			</div>
 			{dpProgress !== 0 && dpProgress !== 100 ? (
-				<div className="dp__progress">Uploading :{dpProgress}</div>
+				<div className="dp__progress">Uploading :{dpProgress}%</div>
 			) : (
 				''
 			)}
