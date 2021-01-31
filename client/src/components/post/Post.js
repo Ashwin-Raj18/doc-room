@@ -57,7 +57,7 @@ const Post = ({
 			</Link>
 			<PostItem post={post} dpPic={dpPic} showActions={false} />
 			<CommentForm postId={post._id} />
-			<div className="comments">{post.comments.map((com) => getCommentElemnt(com))}</div>
+			<div className="comments">{post.comments?.map((com) => getCommentElemnt(com))}</div>
 		</Fragment>
 	);
 };
