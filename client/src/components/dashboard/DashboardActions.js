@@ -49,7 +49,11 @@ const DashboardActions = () => {
 					}
 				/>
 			</div>
-			{dpState !== 0 && d}
+			{dpProgress !== 0 && dpProgress !== 100 ? (
+				<div className="dp__progress">dpProgress</div>
+			) : (
+				''
+			)}
 			<div className="upload__progress" />
 			<div onClick={onUploadClick} className="btn btn-light">
 				<input
